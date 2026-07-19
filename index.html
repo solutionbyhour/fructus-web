@@ -96,15 +96,12 @@
       <span class="tracking-tight">Fructus</span>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm text-ink-mute">
-      <a href="#features" class="hover:text-ink transition">Features</a>
+      <a href="#what" class="hover:text-ink transition">What it does</a>
       <a href="#how" class="hover:text-ink transition">How it works</a>
       <a href="#output" class="hover:text-ink transition">Output</a>
       <a href="#architecture" class="hover:text-ink transition">Architecture</a>
     </nav>
-    <a href="#waitlist" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold bg-brand text-white px-4 py-2 rounded-lg hover:bg-brand2 transition">
-      Get access
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+    <div class="hidden md:block text-sm text-ink-dim">A SolutionByHour project</div>
   </div>
 </header>
 
@@ -113,23 +110,24 @@
   <div class="absolute inset-0 hero-grid opacity-60"></div>
   <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-24">
     <div class="max-w-3xl reveal">
-      <span class="badge bg-positive-bg text-positive">Self-hosted · MCP-native</span>
+      <span class="badge bg-positive-bg text-positive">A self-hosted project · Not a product</span>
       <h1 class="mt-5 text-5xl md:text-6xl font-extrabold tracking-tight text-ink leading-[1.05]">
         Your portfolio,<br/>audited by AI.
       </h1>
       <p class="mt-6 text-lg md:text-xl text-ink-mute leading-relaxed max-w-2xl">
-        Fructus is a personal AI analyst for your investment book. Live positions from
-        40+ brokerages, grounded thesis audits with news &amp; Reddit &amp; analyst context,
-        market-signal discovery for new ideas — and rich PDF reports for every run.
+        Fructus is a personal AI analyst I built for my own investment book. It pulls live
+        positions from any brokerage, re-checks each thesis against fresh news, Reddit,
+        analyst, and insider data, and generates a rich PDF report. This page explains
+        what it does and how it works.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#features" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
-          See what it does
+        <a href="#what" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
+          Read the walkthrough
           <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#output" class="inline-flex items-center gap-2 bg-white border border-rule text-ink font-semibold px-5 py-3 rounded-xl shadow-card hover:border-brand transition">
-          View a sample report
+          See the reports it produces
         </a>
       </div>
 
@@ -201,28 +199,29 @@
   </div>
 </section>
 
-<!-- ── Value Prop / Kicker ──────────────────────────────────────────────── -->
+<!-- ── The problem it solves ───────────────────────────────────────────── -->
 <section class="border-y border-rule bg-white">
   <div class="max-w-6xl mx-auto px-6 py-14 text-center">
-    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Why Fructus</p>
+    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The problem</p>
     <h2 class="mt-3 text-2xl md:text-3xl font-bold text-ink max-w-3xl mx-auto leading-tight">
-      Thesis discipline is boring. So the AI does it — and hands you a report.
+      Thesis discipline is tedious. Nobody keeps up with it.
     </h2>
     <p class="mt-4 text-ink-mute max-w-2xl mx-auto">
-      Every week, Fructus re-reads the investment case for each stock you own,
-      cross-checks it against fresh news, Reddit chatter, analyst actions and
-      insider filings, and tells you whether it still holds.
+      You bought each stock for a reason. Months later, you can't remember what
+      that reason was — let alone whether it still holds up. Fructus re-does that
+      research for you: news, Reddit sentiment, analyst actions, insider filings,
+      macro context. Verdict at the top. Evidence underneath.
     </p>
   </div>
 </section>
 
-<!-- ── Features ─────────────────────────────────────────────────────────── -->
-<section id="features" class="py-24">
+<!-- ── What it does ────────────────────────────────────────────────────── -->
+<section id="what" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="max-w-2xl">
-      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Features</p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">Six things it does for you, quietly.</h2>
-      <p class="mt-3 text-ink-mute">No dashboards to check. No decisions to hunt down. Fructus runs the discipline you keep forgetting to do.</p>
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">What it does</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">Six jobs, running quietly in the background.</h2>
+      <p class="mt-3 text-ink-mute">No dashboards to check. No decisions to hunt down. Everything below happens in a self-hosted server that speaks JSON to your CLI or your chat assistant.</p>
     </div>
 
     <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -459,25 +458,25 @@
   </div>
 </section>
 
-<!-- ── Waitlist / CTA ──────────────────────────────────────────────────── -->
-<section id="waitlist" class="py-24 border-t border-rule">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The current state</p>
+<!-- ── Contact ─────────────────────────────────────────────────────────── -->
+<section id="contact" class="py-24 border-t border-rule">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Want access</p>
     <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">
-      Fructus is running in production — for one user.
+      Reach out if you want to see it running.
     </h2>
-    <p class="mt-4 text-ink-mute max-w-2xl mx-auto">
-      That user is the builder. The code lives in a private repo while the
-      shape settles. Reach out if you'd like a walkthrough, a copy of the
-      Postman collection, or to talk about self-hosting your own.
+    <p class="mt-4 text-ink-mute">
+      The code is a private repo for now. Happy to walk you through it, share
+      the Postman collection, or talk about running your own copy.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href="mailto:hello@solutionbyhour.com" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
-        Request a walkthrough
-        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="mailto:shubhamkokul@gmail.com" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        shubhamkokul@gmail.com
       </a>
-      <a href="https://github.com/solutionbyhour" class="inline-flex items-center gap-2 bg-white border border-rule text-ink font-semibold px-5 py-3 rounded-xl shadow-card hover:border-brand transition">
-        SolutionByHour on GitHub
+      <a href="https://www.linkedin.com/in/shubhamkokul/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white border border-rule text-ink font-semibold px-5 py-3 rounded-xl shadow-card hover:border-brand transition">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
       </a>
     </div>
   </div>
