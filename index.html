@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fructus — Your portfolio, audited.</title>
+  <meta name="description" content="A self-hosted AI portfolio analyst. Live positions from 40+ brokerages, grounded thesis audits, market-signal discovery, and beautiful PDF reports — all yours to run." />
+  <meta property="og:title" content="Fructus — Your portfolio, audited." />
+  <meta property="og:description" content="Live positions, AI-grounded thesis audits, and market discovery. Self-hosted. Yours to run." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1A365D" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['JetBrains Mono', 'ui-monospace'],
+          },
+          colors: {
+            ink:       '#1A202C',
+            'ink-mute':'#4A5568',
+            'ink-dim': '#718096',
+            paper:     '#FAFBFC',
+            band:      '#F1F5F9',
+            rule:      '#E2E8F0',
+            brand:     '#1A365D',
+            brand2:    '#2B6CB0',
+            positive:  '#22543D',
+            'positive-bg':'#F0FFF4',
+            warn:      '#7B341E',
+            'warn-bg': '#FFFBEB',
+            danger:    '#742A2A',
+            'danger-bg':'#FFF5F5',
+          },
+          boxShadow: {
+            card:  '0 1px 3px rgba(15,23,42,0.06), 0 6px 20px -8px rgba(15,23,42,0.12)',
+            deep:  '0 4px 12px rgba(15,23,42,0.08), 0 16px 48px -16px rgba(15,23,42,0.18)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 40%, #FAFBFC 100%); }
+    .hero-grid {
+      background-image:
+        radial-gradient(#E2E8F0 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: -13px -13px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 70%);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 70%);
+    }
+    .badge {
+      display: inline-flex; align-items: center; padding: 4px 10px;
+      border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .01em;
+    }
+    .chip {
+      display: inline-flex; align-items: center; padding: 3px 8px;
+      border-radius: 6px; font-size: 11px; font-weight: 600;
+    }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #EEF2F7; color: #1A365D;
+    }
+    .step-line {
+      background: linear-gradient(90deg, rgba(43,108,176,0.15), rgba(43,108,176,0.05));
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { animation: fadeUp .6s ease-out both; }
+  </style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+<!-- ── Nav ────────────────────────────────────────────────────────────── -->
+<header class="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-rule">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 font-bold text-ink">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="24" height="24" rx="6" fill="#1A365D"/>
+        <path d="M8 17V9h4.2a3 3 0 010 6H10" stroke="#F0FFF4" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="18" cy="16" r="1.5" fill="#68D391"/>
+      </svg>
+      <span class="tracking-tight">Fructus</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-ink-mute">
+      <a href="#features" class="hover:text-ink transition">Features</a>
+      <a href="#how" class="hover:text-ink transition">How it works</a>
+      <a href="#output" class="hover:text-ink transition">Output</a>
+      <a href="#architecture" class="hover:text-ink transition">Architecture</a>
+    </nav>
+    <a href="#waitlist" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold bg-brand text-white px-4 py-2 rounded-lg hover:bg-brand2 transition">
+      Get access
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ── Hero ───────────────────────────────────────────────────────────── -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-60"></div>
+  <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-24">
+    <div class="max-w-3xl reveal">
+      <span class="badge bg-positive-bg text-positive">Self-hosted · MCP-native</span>
+      <h1 class="mt-5 text-5xl md:text-6xl font-extrabold tracking-tight text-ink leading-[1.05]">
+        Your portfolio,<br/>audited by AI.
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-ink-mute leading-relaxed max-w-2xl">
+        Fructus is a personal AI analyst for your investment book. Live positions from
+        40+ brokerages, grounded thesis audits with news &amp; Reddit &amp; analyst context,
+        market-signal discovery for new ideas — and rich PDF reports for every run.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#features" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
+          See what it does
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#output" class="inline-flex items-center gap-2 bg-white border border-rule text-ink font-semibold px-5 py-3 rounded-xl shadow-card hover:border-brand transition">
+          View a sample report
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-ink-mute">
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-positive"></span>
+          40+ brokerages via SnapTrade
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand2"></span>
+          Grounded research (news, Reddit, analyst, insider, macro)
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-warn"></span>
+          Chat with your portfolio via MCP
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual: stacked mock cards -->
+    <div class="mt-16 grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-rule bg-white shadow-deep p-6 reveal">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-brand text-white text-xs font-bold flex items-center justify-center">GOOG</div>
+            <div>
+              <div class="font-semibold text-sm">Alphabet</div>
+              <div class="text-xs text-ink-dim">Thesis audit · 7:12 PM</div>
+            </div>
+          </div>
+          <span class="badge bg-positive-bg text-positive">Intact</span>
+        </div>
+        <p class="mt-4 text-sm text-ink-mute leading-relaxed">
+          Cloud growth accelerating with the AI backlog now materially compounding.
+          Chrome-divestiture overhang cleared with the July DOJ ruling. Q2 print on
+          July 22 remains the next major catalyst.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          <span class="chip bg-band text-ink-mute">📰 News</span>
+          <span class="chip bg-band text-ink-mute">💬 Reddit</span>
+          <span class="chip bg-band text-ink-mute">🏦 Analyst</span>
+          <span class="chip bg-band text-ink-mute">👤 Insider</span>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-rule bg-white shadow-deep p-6 reveal" style="animation-delay:.1s">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-warn text-white text-xs font-bold flex items-center justify-center">DTE</div>
+            <div>
+              <div class="font-semibold text-sm">DTE Energy</div>
+              <div class="text-xs text-ink-dim">Discovery pick · Reddit rank #3</div>
+            </div>
+          </div>
+          <span class="badge bg-positive-bg text-positive">Add to Watchlist</span>
+        </div>
+        <p class="mt-4 text-sm text-ink-mute leading-relaxed">
+          Sudden retail interest in a stable regulated utility. Complements your
+          existing VST holding by expanding utility exposure with a lower-beta,
+          highly regulated income generator.
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-ink-dim">
+          <div><span class="font-semibold text-ink">$148.19</span> <span class="text-danger">-0.48%</span></div>
+          <div><span class="font-semibold">61</span> Reddit mentions</div>
+          <div><span class="text-positive font-semibold">▲8</span> 24h rank Δ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Value Prop / Kicker ──────────────────────────────────────────────── -->
+<section class="border-y border-rule bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-14 text-center">
+    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Why Fructus</p>
+    <h2 class="mt-3 text-2xl md:text-3xl font-bold text-ink max-w-3xl mx-auto leading-tight">
+      Thesis discipline is boring. So the AI does it — and hands you a report.
+    </h2>
+    <p class="mt-4 text-ink-mute max-w-2xl mx-auto">
+      Every week, Fructus re-reads the investment case for each stock you own,
+      cross-checks it against fresh news, Reddit chatter, analyst actions and
+      insider filings, and tells you whether it still holds.
+    </p>
+  </div>
+</section>
+
+<!-- ── Features ─────────────────────────────────────────────────────────── -->
+<section id="features" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Features</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">Six things it does for you, quietly.</h2>
+      <p class="mt-3 text-ink-mute">No dashboards to check. No decisions to hunt down. Fructus runs the discipline you keep forgetting to do.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Feature 1 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-9"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">Live portfolio, all brokerages</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          E*TRADE, Schwab, Robinhood and 40+ others through SnapTrade. Positions,
+          balances, cost basis, order history — always current, always aggregated.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">AI thesis audits</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          Write your investment thesis once. Fructus re-checks it with grounded
+          search across news, Reddit, analyst reports, insider filings, and macro.
+          Verdict: <span class="chip bg-positive-bg text-positive">Intact</span>
+          <span class="chip bg-warn-bg text-warn ml-1">Challenged</span>
+          <span class="chip bg-danger-bg text-danger ml-1">Broken</span>
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">Idea discovery</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          What's the market talking about right now? Fructus fans in Yahoo
+          screeners and Reddit mention velocity, then ranks candidates with
+          portfolio-fit context — so suggestions actually complement what you own.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h12v6a4 4 0 01-4 4h-2l-3 3v-3H4V4z"/><path d="M20 8v9a3 3 0 01-3 3h-7"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">Chat with your portfolio</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          MCP-native by design. Ask your AI assistant "how's my portfolio doing?"
+          or "run a thesis audit on NVDA" and Fructus responds live — through
+          Claude Code, Antigravity, or anything else that speaks MCP.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M9 3h6v4H9zM8 12h8M8 16h5"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">Beautiful PDF reports</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          Every audit and every discovery run produces a polished multi-page
+          PDF — verdict tallies, per-ticker breakdowns, exit-signal tables.
+          Written straight to your Downloads folder.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 class="mt-4 font-bold text-lg">Self-hosted, your data</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          Fructus runs on your VPS. Positions in your database. Credentials
+          encrypted at rest. Files written locally — never on a shared server.
+          No third party sees your holdings.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ─────────────────────────────────────────────────────── -->
+<section id="how" class="py-24 bg-band border-y border-rule">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">How it works</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">Three steps. One evening to set up.</h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6 relative">
+      <div class="hidden md:block absolute top-8 left-0 right-0 h-0.5 step-line"></div>
+
+      <div class="relative rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center mb-4">1</div>
+        <h3 class="font-bold text-lg">Connect your brokerages</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          One-time SnapTrade link. Weeks-long tokens. Works with E*TRADE,
+          Schwab, Robinhood, Fidelity, Interactive Brokers, and 40+ more.
+        </p>
+      </div>
+
+      <div class="relative rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center mb-4">2</div>
+        <h3 class="font-bold text-lg">Write your thesis</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          One paragraph per stock. Add what to watch and specific
+          exit signals. Or let the AI draft a first-cut you refine later.
+        </p>
+      </div>
+
+      <div class="relative rounded-2xl border border-rule bg-white p-6 shadow-card">
+        <div class="w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center mb-4">3</div>
+        <h3 class="font-bold text-lg">Get audited every week</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          Trigger from chat, CLI, or a cron. Get a rich PDF and per-ticker
+          Markdown for your Obsidian vault. Skim in five minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Sample output ───────────────────────────────────────────────────── -->
+<section id="output" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Sample output</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">The reports look better than what your bank sends.</h2>
+      <p class="mt-3 text-ink-mute">A verdict overview on page 1. One page per ticker after that. Grounded research embedded inline. Colored exit-signal tables. Page numbers.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      <!-- Thesis PDF -->
+      <div class="rounded-2xl border border-rule bg-white shadow-deep overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-3 border-b border-rule bg-band">
+          <div>
+            <div class="font-semibold text-sm">Thesis Portfolio Report</div>
+            <div class="text-xs text-ink-dim">Multi-page · overview + per ticker</div>
+          </div>
+          <span class="chip bg-positive-bg text-positive">6 Intact · 3 Challenged</span>
+        </div>
+        <div class="aspect-[3/4] bg-band">
+          <img src="images/thesis-overview-01.png" alt="Fructus thesis audit — portfolio overview page"
+               class="w-full h-full object-cover object-top" loading="lazy"/>
+        </div>
+      </div>
+
+      <!-- Discovery PDF -->
+      <div class="rounded-2xl border border-rule bg-white shadow-deep overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-3 border-b border-rule bg-band">
+          <div>
+            <div class="font-semibold text-sm">Discovery Screen Report</div>
+            <div class="text-xs text-ink-dim">Ranked candidates with rationale</div>
+          </div>
+          <span class="chip bg-positive-bg text-positive">5 Add · 5 Watch</span>
+        </div>
+        <div class="aspect-[3/4] bg-band">
+          <img src="images/discovery-overview-1.png" alt="Fructus discovery screen — candidate cards"
+               class="w-full h-full object-cover object-top" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-2xl border border-rule bg-white shadow-card overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-3 border-b border-rule bg-band">
+        <div>
+          <div class="font-semibold text-sm">A single ticker page — AMD</div>
+          <div class="text-xs text-ink-dim">Executive summary → sections → exit signals</div>
+        </div>
+        <span class="chip bg-positive-bg text-positive">Intact</span>
+      </div>
+      <div class="aspect-[16/9] bg-band">
+        <img src="images/thesis-ticker-02.png" alt="Fructus thesis audit — per-ticker AMD page"
+             class="w-full h-full object-cover object-top" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Architecture (product-y, not techy) ─────────────────────────────── -->
+<section id="architecture" class="py-24 bg-white border-t border-rule">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Under the hood</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">Simple where it matters. Serious where it counts.</h2>
+      <p class="mt-3 text-ink-mute">A stateless server that only ever returns JSON. Local clients that write files. Encrypted credentials. No third-party sees your holdings.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-rule bg-paper p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The pipeline</p>
+        <h3 class="mt-2 font-bold text-lg">Live data in.</h3>
+        <p class="mt-2 text-sm text-ink-mute">
+          Positions from SnapTrade. Quotes from Yahoo. Reddit mention velocity
+          from Apewisdom. Fresh every request.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-rule bg-paper p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The intelligence</p>
+        <h3 class="mt-2 font-bold text-lg">Grounded AI in the middle.</h3>
+        <p class="mt-2 text-sm text-ink-mute">
+          Gemini with Google Search grounding. Not a stock-picking oracle —
+          a research assistant with citations, portfolio-fit context, and
+          a strict rubric.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-rule bg-paper p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The output</p>
+        <h3 class="mt-2 font-bold text-lg">JSON out. Files stay local.</h3>
+        <p class="mt-2 text-sm text-ink-mute">
+          Your VPS never writes to your laptop. The CLI or your AI chat
+          agent takes the JSON and writes MD to your vault and PDF to
+          your Downloads. Your data, your disk.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-2xl border border-rule bg-paper p-8">
+      <p class="text-xs font-semibold tracking-widest uppercase text-brand2">Design principle</p>
+      <h3 class="mt-2 font-bold text-2xl md:text-3xl tracking-tight max-w-3xl">
+        Preview. Confirm. Only then spend tokens.
+      </h3>
+      <p class="mt-4 text-ink-mute max-w-3xl">
+        Every AI-powered action in Fructus has a cheap preview first. You always
+        see what would run — which tickers, which signals, which sources —
+        before a single dollar of tokens gets spent. Discipline built into the
+        API shape, not left as a rule to remember.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Waitlist / CTA ──────────────────────────────────────────────────── -->
+<section id="waitlist" class="py-24 border-t border-rule">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="text-xs font-semibold tracking-widest uppercase text-brand2">The current state</p>
+    <h2 class="mt-3 text-3xl md:text-4xl font-bold text-ink tracking-tight">
+      Fructus is running in production — for one user.
+    </h2>
+    <p class="mt-4 text-ink-mute max-w-2xl mx-auto">
+      That user is the builder. The code lives in a private repo while the
+      shape settles. Reach out if you'd like a walkthrough, a copy of the
+      Postman collection, or to talk about self-hosting your own.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="mailto:hello@solutionbyhour.com" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-5 py-3 rounded-xl shadow-card hover:bg-brand2 transition">
+        Request a walkthrough
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6 2m4 4L6 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://github.com/solutionbyhour" class="inline-flex items-center gap-2 bg-white border border-rule text-ink font-semibold px-5 py-3 rounded-xl shadow-card hover:border-brand transition">
+        SolutionByHour on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────────────────────── -->
+<footer class="border-t border-rule bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div class="flex items-center gap-2 text-sm text-ink-mute">
+      <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+        <rect x="1" y="1" width="24" height="24" rx="6" fill="#1A365D"/>
+        <path d="M8 17V9h4.2a3 3 0 010 6H10" stroke="#F0FFF4" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="18" cy="16" r="1.5" fill="#68D391"/>
+      </svg>
+      <span>Fructus is a <a href="https://github.com/solutionbyhour" class="text-brand2 hover:underline">SolutionByHour</a> project.</span>
+    </div>
+    <div class="text-xs text-ink-dim">
+      © 2026 SolutionByHour. All ticker data is your own — Fructus is the plumbing.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
